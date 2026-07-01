@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Payment - Apartment Rental</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md p-4 flex justify-between items-center">
+        <h1 class="text-xl font-semibold text-gray-800">Apartment Rental</h1>
+        <div>
+            <span class="text-gray-600 mr-4">Hello, {{ session['user'] }}</span>
+            <a href="{{ url_for('routes.logout') }}" class="text-purple-600 hover:text-purple-800 font-medium transition">Logout</a>
+        </div>
+    </nav>
+
+    <main class="p-6 max-w-md mx-auto">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Update Payment</h2>
+
+        <form method="POST" action="{{ url_for('routes.update_payment_web', payment_id=payment.Payment_ID) }}" class="bg-white p-6 rounded-lg shadow-md">
+            <div class="mb-4">
+                <label class="block text-gray-700 font-medium mb-1">Rental</label>
+                <select name="rental_id" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-300 transition duration-200">
+                    {% for r in rentals %}
+                        <option value="{{ r.Rental_ID }}" {% if r.Rental_ID == payment.Rental_ID %}selected{% endif %}>
+                            {{ r.Tenant }} - {{ r.Apartment }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 font-medium mb-1">Amount</label>
+                <input type="number" name="amount" value="{{ payment.Amount }}" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-300 transition duration-200">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 font-medium mb-1">Payment Date</label>
+                <input type="date" name="payment_date" value="{{ payment.Payment_Date }}" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-300 transition duration-200">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 font-medium mb-1">Month</label>
+                <input type="text" name="month" value="{{ payment.Month }}" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-300 transition duration-200">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 font-medium mb-1">Status</label>
+                <select name="status" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-300 transition duration-200">
+                    <option value="Paid" {% if payment.Status=='Paid' %}selected{% endif %}>Paid</option>
+                    <option value="Pending" {% if payment.Status=='Pending' %}selected{% endif %}>Pending</option>
+                </select>
+            </div>
+
+            <button type="submit" class="w-full py-2 rounded-lg bg-blue-200 text-blue-800 font-medium hover:bg-blue-300 transition duration-200">
+                Update Payment
+            </button>
+        </form>
+    </main>
+
+</body>
+</html>

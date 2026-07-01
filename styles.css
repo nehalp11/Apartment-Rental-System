@@ -1,0 +1,145 @@
+/* General body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Headings */
+h1 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+h2 {
+    color: #34495e;
+    margin-top: 30px;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #2980b9;
+    margin-right: 15px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Forms */
+form {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+form input, form select, form button {
+    margin: 5px 0;
+    padding: 8px;
+    font-size: 14px;
+    width: 200px;
+}
+
+form button {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+form button:hover {
+    background-color: #3498db;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #2980b9;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table button {
+    padding: 5px 10px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+table button:hover {
+    opacity: 0.8;
+}
+
+table button:first-child {
+    background-color: #27ae60;
+    color: white;
+}
+
+table button:last-child {
+    background-color: #c0392b;
+    color: white;
+}
+
+/* Navigation */
+nav {
+    margin: 20px 0;
+    text-align: center;
+}
+
+nav a {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: #2980b9;
+    color: white;
+}
+
+/* Inputs focus effect */
+input:focus, select:focus {
+    outline: none;
+    border: 2px solid #2980b9;
+}
+
+/* Messages / Alerts */
+.alert {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.alert.success {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.alert.error {
+    background-color: #e74c3c;
+    color: white;
+}

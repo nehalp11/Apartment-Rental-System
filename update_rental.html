@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Rental</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+<main class="p-6 max-w-md mx-auto bg-white shadow rounded-lg mt-10">
+    <h2 class="text-xl font-semibold mb-4 text-gray-800">Update Rental</h2>
+    <form action="{{ url_for('routes.update_rental_web', rental_id=rental.Rental_ID) }}" method="POST" class="space-y-4">
+        <div>
+            <label class="block mb-1 text-gray-700">Tenant</label>
+            <select name="tenant_id" class="w-full border-gray-300 rounded p-2">
+                {% for t in tenants %}
+                <option value="{{ t.Tenant_ID }}" {% if t.Tenant_ID == rental.Tenant_ID %}selected{% endif %}>{{ t.Name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label class="block mb-1 text-gray-700">Apartment</label>
+            <select name="apt_id" class="w-full border-gray-300 rounded p-2">
+                {% for a in apartments %}
+                <option value="{{ a.Apt_ID }}" {% if a.Apt_ID == rental.Apt_ID %}selected{% endif %}>{{ a.Building_Name }} ({{ a.Type }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label class="block mb-1 text-gray-700">Start Date</label>
+            <input type="date" name="start_date" value="{{ rental.Start_Date }}" class="w-full border-gray-300 rounded p-2">
+        </div>
+        <div>
+            <label class="block mb-1 text-gray-700">End Date</label>
+            <input type="date" name="end_date" value="{{ rental.End_Date }}" class="w-full border-gray-300 rounded p-2">
+        </div>
+        <div>
+            <label class="block mb-1 text-gray-700">Status</label>
+            <input type="text" name="status" value="{{ rental.Status }}" class="w-full border-gray-300 rounded p-2">
+        </div>
+        <div class="flex justify-between">
+            <button type="submit" class="bg-blue-200 text-blue-800 px-4 py-2 rounded hover:bg-blue-300 transition">Update</button>
+            <a href="{{ url_for('routes.rentals') }}" class="text-gray-600 hover:text-gray-800">Cancel</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>
